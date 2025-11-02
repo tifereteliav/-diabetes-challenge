@@ -36,7 +36,48 @@
             background-color: #0A0A0A; /* Deep Black Background */
             color: #F5F5F5; /* Light Text */
             direction: rtl; /* Right-to-Left for Hebrew */
+            position: relative; /* Important for placing the effect layer */
+            overflow-x: hidden; /* Prevent horizontal scroll from fixed elements */
         }
+        
+        /* === INNOVATION EFFECT: Subtle Dot Grid (Data/Tech Feel) === */
+        /* Set body background to just the dot grid */
+        body {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* === NEW INNOVATION EFFECT: Animated Deep Glow (Flowing Energy) === */
+        /* Keyframes for a slow, subtle shift of the central light source */
+        @keyframes deepShift {
+            0% { transform: translate(0%, 0%); }
+            33% { transform: translate(5%, 5%); }
+            66% { transform: translate(-5%, -5%); }
+            100% { transform: translate(0%, 0%); }
+        }
+
+        /* Pseudo-element to hold the animated radial glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; 
+            z-index: -10; /* Ensure it stays in the back */
+            opacity: 1;
+            
+            /* Define the radial gradient glow */
+            background: radial-gradient(circle 800px at 50% 50%, 
+                                        rgba(212, 175, 55, 0.08) 0%, /* Gold glow source */
+                                        rgba(10, 10, 10, 1) 75%, 
+                                        rgba(10, 10, 10, 1) 100%);
+            
+            /* Apply the new subtle animation for the flowing effect */
+            animation: deepShift 40s ease-in-out infinite alternate;
+        }
+        
         /* Custom class for the gold gradient button effect - enhanced for metallic look */
         .gold-button {
             /* Using multiple colors for a metallic sheen effect */
@@ -51,6 +92,27 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.8);
         }
+        
+        /* --- SHADERS FOR INNOVATION --- */
+
+        /* 1. Challenge Card Hover: Simple, strong glow */
+        .challenge-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .challenge-card:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.9); /* Stronger hover glow */
+        }
+
+        /* 2. Subtle Text Glow for Card Titles (Digital look) */
+        .challenge-card h2 {
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.4);
+        }
+        
+        /* Apply border and initial shadow to header (without pulsing animation) */
+        header {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); 
+        }
     </style>
 </head>
 <body class="min-h-screen antialiased">
@@ -62,7 +124,7 @@
         <div id="globalMessage" class="fixed top-4 left-1/2 -translate-x-1/2 p-4 rounded-lg z-50 text-center text-sm font-bold shadow-xl transition-all duration-300 opacity-0 pointer-events-none" style="min-width: 300px;"></div>
 
         <!-- Conference Header & Logo Placeholder -->
-        <header class="bg-accent-dark border-b border-primary-gold/50 rounded-xl shadow-gold-glow p-6 mb-12">
+        <header class="bg-accent-dark border-b border-primary-gold/50 rounded-xl p-6 mb-12">
             <div class="flex flex-col items-center text-center">
                 <!-- LOGOJ.jpeg - תמונה של לוגו הכנס. הקובץ מוגדר לנתיב מקומי LOGOJ.jpeg. יש לוודא שהקובץ נמצא באותה תיקייה. -->
                 <div class="w-full max-w-sm mx-auto mb-6">
@@ -88,8 +150,13 @@
                     בהצלחה
                 </p>
                 <div class="text-light-text text-sm sm:text-base font-light space-y-1">
-                    <p>תהילה הראל | אחות מומחית קלינית בסוכרת ומרכזת תחום סוכרת המרכז הרפואי הדסה</p>
-                    <p>תפארת אליאב | אחות מומחית קלינית בסוכרת ומובילת חדשנות בעבודת האחות, כללית מחוז ירושלים</p>
+                    <!-- Highlighting Names -->
+                    <p>
+                        <span class="font-bold text-primary-gold">תהילה הראל</span> | אחות מומחית קלינית בסוכרת ומרכזת תחום סוכרת המרכז הרפואי הדסה
+                    </p>
+                    <p>
+                        <span class="font-bold text-primary-gold">תפארת אליאב</span> | אחות מומחית קלינית בסוכרת ומובילת חדשנות בעבודת האחות, כללית מחוז ירושלים
+                    </p>
                 </div>
             </div>
         </header>
@@ -264,7 +331,7 @@
 
         // Apply dynamic card styling
         document.querySelectorAll('.challenge-card').forEach(card => {
-            card.className = 'p-6 bg-accent-dark rounded-xl shadow-lg hover:shadow-gold-glow transition duration-300 border border-primary-gold/20 flex flex-col justify-between';
+            card.className = 'p-6 bg-accent-dark rounded-xl shadow-lg transition duration-300 border border-primary-gold/20 flex flex-col justify-between challenge-card';
         });
 
     </script>
