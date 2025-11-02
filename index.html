@@ -12,7 +12,7 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary-gold': '#FFD700', // Gold color
+                        'primary-gold': '#D4AF37', // Updated to a Richer Gold color
                         'dark-bg': '#0A0A0A',     // Deep Black
                         'light-text': '#F5F5F5',  // Off-White/Silver
                         'accent-dark': '#1A1A1A', // Slightly lighter black for cards
@@ -21,8 +21,9 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     boxShadow: {
-                        'gold-glow': '0 0 15px rgba(255, 215, 0, 0.5)',
-                        'inner-gold': 'inset 0 2px 4px rgba(255, 215, 0, 0.2)',
+                        // Updated glow and inner shadows to match the richer gold
+                        'gold-glow': '0 0 15px rgba(212, 175, 55, 0.7)',
+                        'inner-gold': 'inset 0 2px 4px rgba(212, 175, 55, 0.4)',
                     }
                 }
             }
@@ -36,17 +37,19 @@
             color: #F5F5F5; /* Light Text */
             direction: rtl; /* Right-to-Left for Hebrew */
         }
-        /* Custom class for the gold gradient button effect */
+        /* Custom class for the gold gradient button effect - enhanced for metallic look */
         .gold-button {
-            background: linear-gradient(145deg, #FFD700, #E0B800);
+            /* Using multiple colors for a metallic sheen effect */
+            background: linear-gradient(145deg, #FFD700, #D4AF37, #B8860B);
             color: #0A0A0A;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5); 
         }
         .gold-button:hover {
+            /* Slightly brighter hover effect */
             background: linear-gradient(145deg, #FFE866, #FFD700);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.8);
         }
     </style>
 </head>
